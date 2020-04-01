@@ -1,0 +1,20 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: [ubuntu-latest, ubuntu-16.04]
+
+    steps:
+    - uses: purcell/setup-emacs@master
+    - uses: actions/checkout@v2
+    - name: install librime-dev
+      run: sudo apt-get install -y librime-dev
+    - name: make lib
+      run: make lib
